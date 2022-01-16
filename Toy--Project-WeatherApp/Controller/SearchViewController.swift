@@ -7,9 +7,19 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
 
-    
+
+
+
+class resultViewController: UIViewController {
+    override func viewDidLoad() {
+        view.backgroundColor = .blue
+    }
+}
+
+class SearchViewController: UIViewController, UISearchResultsUpdating {
+
+    let searchController = UISearchController(searchResultsController: resultViewController())
     
     
     
@@ -17,7 +27,9 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "날씨"
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
         
         
         
@@ -29,7 +41,15 @@ class SearchViewController: UIViewController {
         
     }
     
-    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        
+        
+        let viewController = searchController.searchResultsController as? resultViewController
+        viewController?.view.backgroundColor = .brown
+        print(text)
+        
+    }
     
     
     
