@@ -11,46 +11,29 @@ import UIKit
 
 
 
-class resultViewController: UIViewController {
-    override func viewDidLoad() {
-        view.backgroundColor = .blue
-    }
-}
 
-class SearchViewController: UIViewController, UISearchResultsUpdating {
 
-    let searchController = UISearchController(searchResultsController: resultViewController())
-    
-    
+class SearchViewController: UIViewController {
+
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "날씨"
-        searchController.searchResultsUpdater = self
-        navigationItem.searchController = searchController
+        
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 280, height: 0))
+        searchBar.placeholder = "Search User"
+        navigationController?.navigationItem.titleView = searchBar
         
         
         
         
-        
-        
-        
+       
+        searchBar.delegate = self
         
         
     }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else { return }
         
-        
-        let viewController = searchController.searchResultsController as? resultViewController
-        viewController?.view.backgroundColor = .brown
-        print(text)
-        
-    }
-    
     
     
     
@@ -60,3 +43,13 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
 
     
 }
+
+
+
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print("gg")
+    }
+}
+

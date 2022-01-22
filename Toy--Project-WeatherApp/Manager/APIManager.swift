@@ -16,7 +16,7 @@ final class APIManager {
     
     struct Constants {
         static let baseUrl = "https://api.openweathermap.org/data/2.5/"
-        static let apiKey = ""
+        static let apiKey = "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"
         static let baseLocation = (37.555985397204545, 126.97129157812294)
     }
     
